@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const triggerButtons = document.querySelectorAll('.utility-trigger');
-	const menus = document.querySelectorAll('.utility-menu');
-	const utilityGroups = document.querySelectorAll('.utility-group');
 	const themeInputs = document.querySelectorAll('input[name="theme"]');
 	const languageInputs = document.querySelectorAll('input[name="language"]');
 	const languageLabel = document.getElementById('language-label');
@@ -66,69 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('unibites-language', lang);
 	};
 
-	const closeAllMenus = () => {
-		triggerButtons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
-		menus.forEach((menu) => {
-			menu.hidden = true;
-		});
-	};
-
-	const closeGroupMenu = (group) => {
-		const button = group.querySelector('.utility-trigger');
-		const menu = group.querySelector('.utility-menu');
-		if (button) {
-			button.setAttribute('aria-expanded', 'false');
-		}
-		if (menu) {
-			menu.hidden = true;
-		}
-	};
-
-	menus.forEach((menu) => {
-		menu.addEventListener('click', (event) => {
-			if (event.target.closest('label')) {
-				const group = menu.closest('.utility-group');
-				if (group) {
-					closeGroupMenu(group);
-				}
-			}
-		});
-	});
-
-	document.addEventListener('click', (event) => {
-		if (event.target.closest('.utility-menu label, .utility-menu input')) {
-			setTimeout(closeAllMenus, 0);
-		}
-	});
-
-	triggerButtons.forEach((button) => {
-		button.addEventListener('click', (event) => {
-			event.stopPropagation();
-			const menuId = button.getAttribute('data-menu-target');
-			const currentMenu = document.getElementById(menuId);
-			const isOpen = button.getAttribute('aria-expanded') === 'true';
-
-			closeAllMenus();
-
-			if (currentMenu && !isOpen) {
-				button.setAttribute('aria-expanded', 'true');
-				currentMenu.hidden = false;
-			}
-		});
-	});
-
-	document.addEventListener('click', (event) => {
-		if (!event.target.closest('.utility-group')) {
-			closeAllMenus();
-		}
-	});
-
-	utilityGroups.forEach((group) => {
-		group.addEventListener('mouseleave', () => {
-			closeGroupMenu(group);
-		});
-	});
-
 	const savedTheme = localStorage.getItem('unibites-theme') || 'light';
 	const savedLanguage = localStorage.getItem('unibites-language') || 'en';
 	const selectedThemeInput = document.querySelector(`input[name="theme"][value="${savedTheme}"]`);
@@ -147,18 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	themeInputs.forEach((input) => {
 		input.addEventListener('change', () => {
 			setTheme(input.value);
-			closeAllMenus();
 		});
-
-		input.addEventListener('click', closeAllMenus);
 	});
 
 	languageInputs.forEach((input) => {
 		input.addEventListener('change', () => {
 			setLanguage(input.value);
-			closeAllMenus();
 		});
-
-		input.addEventListener('click', closeAllMenus);
 	});
 });

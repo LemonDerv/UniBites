@@ -89,7 +89,7 @@ body.theme-dark {
     border: 1px solid #100C08;
     min-width: 120px;
     padding: 8px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 8px;
     color: #100C08;
@@ -98,8 +98,8 @@ body.theme-dark {
     z-index: 10;
 }
 
-.utility-menu[hidden] {
-    display: none !important;
+.utility-group:hover .utility-menu {
+    display: flex;
 }
 
 .utility-menu label {
