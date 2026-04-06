@@ -124,11 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('change', () => {
             setTheme(input.value);
         });
+
+        input.addEventListener('click', () => {
+            document.querySelectorAll('.utility-trigger').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+            document.querySelectorAll('.utility-menu').forEach((menu) => {
+                menu.hidden = true;
+            });
+        });
     });
 
     languageInputs.forEach((input) => {
         input.addEventListener('change', () => {
             setLanguage(input.value);
+        });
+
+        input.addEventListener('click', () => {
+            document.querySelectorAll('.utility-trigger').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+            document.querySelectorAll('.utility-menu').forEach((menu) => {
+                menu.hidden = true;
+            });
         });
     });
 

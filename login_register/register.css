@@ -93,6 +93,10 @@ body.theme-dark {
     z-index: 10;
 }
 
+.utility-menu[hidden] {
+    display: none !important;
+}
+
 .utility-menu label {
     display: flex;
     align-items: center;

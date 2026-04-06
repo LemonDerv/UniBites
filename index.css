@@ -108,8 +108,7 @@ body.theme-dark {
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.utility-group:hover .utility-menu,
-.utility-group:focus-within .utility-menu {
+.utility-group:hover .utility-menu {
     display: flex;
     opacity: 1;
     transform: translateY(0);

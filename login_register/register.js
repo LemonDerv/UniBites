@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const triggerButtons = document.querySelectorAll('.utility-trigger');
 	const menus = document.querySelectorAll('.utility-menu');
+	const utilityGroups = document.querySelectorAll('.utility-group');
 	const themeInputs = document.querySelectorAll('input[name="theme"]');
 	const languageInputs = document.querySelectorAll('input[name="language"]');
 	const languageLabel = document.getElementById('language-label');
@@ -76,6 +77,34 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	};
 
+	const closeGroupMenu = (group) => {
+		const button = group.querySelector('.utility-trigger');
+		const menu = group.querySelector('.utility-menu');
+		if (button) {
+			button.setAttribute('aria-expanded', 'false');
+		}
+		if (menu) {
+			menu.hidden = true;
+		}
+	};
+
+	menus.forEach((menu) => {
+		menu.addEventListener('click', (event) => {
+			if (event.target.closest('label')) {
+				const group = menu.closest('.utility-group');
+				if (group) {
+					closeGroupMenu(group);
+				}
+			}
+		});
+	});
+
+	document.addEventListener('click', (event) => {
+		if (event.target.closest('.utility-menu label, .utility-menu input')) {
+			setTimeout(closeAllMenus, 0);
+		}
+	});
+
 	triggerButtons.forEach((button) => {
 		button.addEventListener('click', (event) => {
 			event.stopPropagation();
@@ -98,6 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
+	utilityGroups.forEach((group) => {
+		group.addEventListener('mouseleave', () => {
+			closeGroupMenu(group);
+		});
+	});
+
 	const savedTheme = localStorage.getItem('unibites-theme') || 'light';
 	const savedLanguage = localStorage.getItem('unibites-language') || 'en';
 	const selectedThemeInput = document.querySelector(`input[name="theme"][value="${savedTheme}"]`);
@@ -118,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			setTheme(input.value);
 			closeAllMenus();
 		});
+
+		input.addEventListener('click', closeAllMenus);
 	});
 
 	languageInputs.forEach((input) => {
@@ -125,5 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			setLanguage(input.value);
 			closeAllMenus();
 		});
+
+		input.addEventListener('click', closeAllMenus);
 	});
 });
