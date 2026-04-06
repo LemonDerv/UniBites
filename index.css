@@ -4,6 +4,16 @@ body {
     background-color: #fff8e7;
 }
 
+body.theme-light {
+    background-color: #fff8e7;
+    color: #100C08;
+}
+
+body.theme-dark {
+    background-color: #1a1714;
+    color: #f7e6d6;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -35,6 +45,122 @@ body {
 .nav-buttons .signup {
     background-color: #cc5500;
     color: #fff8e7;
+}
+
+.utility-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 26px;
+    padding: 10px 30px 14px;
+    background-color: #fff8e7;
+    border-top: 1px solid rgba(16, 12, 8, 0.18);
+    border-bottom: 4px solid rgba(16, 12, 8, 0.18);
+}
+
+.utility-group {
+    position: relative;
+}
+
+.utility-trigger {
+    background: none;
+    border: none;
+    color: #100C08;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.utility-menu {
+    margin-top: 6px;
+    background-color: #e8ddd0;
+    border: 1px solid #100C08;
+    min-width: 120px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #100C08;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    position: absolute;
+    z-index: 10;
+}
+
+.utility-menu label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.about-link {
+    color: #100C08;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.about-link:hover,
+.utility-trigger:hover {
+    color: #cc5500;
+}
+
+body.theme-dark .utility-bar {
+    background-color: #2a2520;
+    border-top-color: rgba(247, 230, 214, 0.22);
+    border-bottom-color: rgba(247, 230, 214, 0.22);
+}
+
+body.theme-dark .utility-trigger,
+body.theme-dark .about-link {
+    color: #f7e6d6;
+}
+
+body.theme-dark .utility-menu {
+    background-color: #3b342d;
+    border-color: #f7e6d6;
+    color: #f7e6d6;
+}
+
+body.theme-dark .hero-text h1 {
+    background-color: rgba(204, 85, 0, 0.9);
+}
+
+body.theme-dark .about-section,
+body.theme-dark .card {
+    background-color: #221d19;
+    color: #f7e6d6;
+}
+
+body.theme-dark .about-section p,
+body.theme-dark .about-section h2,
+body.theme-dark .stat p,
+body.theme-dark .carousel-section h2 {
+    color: #f7e6d6;
+}
+
+body.theme-dark .stats {
+    background-color: #1f1b17;
+}
+
+@media (max-width: 900px) {
+    .utility-bar {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 12px 18px;
+    }
+
+    .utility-trigger,
+    .about-link {
+        font-size: 15px;
+    }
+
+    .utility-menu label {
+        font-size: 14px;
+    }
 }
 
 .hero {
