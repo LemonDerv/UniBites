@@ -84,7 +84,8 @@ body.theme-dark {
 }
 
 .utility-menu {
-    margin-top: 6px;
+    top: 100%;
+    margin-top: 0;
     background-color: #e8ddd0;
     border: 1px solid #100C08;
     min-width: 120px;
