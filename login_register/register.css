@@ -169,6 +169,38 @@ body.theme-dark .footer {
     max-width: 400px;
 }
 
+.auth-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #100C08;
+    background-color: rgba(204, 85, 0, 0.14);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-close:hover {
+    background-color: rgba(204, 85, 0, 0.24);
+    transform: scale(1.05);
+}
+
+body.theme-dark .auth-close {
+    color: #f7e6d6;
+    background-color: rgba(247, 230, 214, 0.14);
+}
+
+body.theme-dark .auth-close:hover {
+    background-color: rgba(247, 230, 214, 0.25);
+}
+
 .auth-form h2 {
     text-align: center;
     color: #100C08;
